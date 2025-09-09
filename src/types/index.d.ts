@@ -1,43 +1,25 @@
-export interface Rover {
-    id: number;
-    name: string;
-    landing_date: string;
-    launch_date: string;
-    status: string;
-    max_sol?: number;
-    max_date?: string;
-    total_photos?: number;
-    cameras?: Camera[];
+interface Event {
+    ID: number;
+    Title: string;
+    Category: string;
+    BannerUrl: string;
+    Description: string;
+    AddressLine1: string;
+    AddressLine2: string;
+    PostCode: string | number;
+    City: string;
+    Country: string;
+    EventStartDate: string;
+    EventEndDate: string;
+    FullDayEvent: "TRUE" | "FALSE";
+    Author: string;
+    Editor: string;
+    Created: string;
+    Modified: string;
 }
 
-interface Camera {
-    id?: number;
-    name: string;
-    rover_id?: number;
-    full_name: string;
-}
-
-export interface Photo {
-    id: number;
-    sol: number;
-    camera: Camera
-    img_src: string;
-    earth_date: string;
-    rover: Rover;
-}
-
-export interface BotResponse {
-    answer: string;
-}
-
-export interface Manifest {
-    name: string;
-    landing_date: string;
-    launch_date: string;
-    status: string;
-    max_sol: number;
-    max_date: string;
-    total_photos: number;
+interface EventResponse {
+    value: Event[];
 }
 
 export interface FetchResponse<T> {
