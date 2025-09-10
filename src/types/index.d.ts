@@ -18,12 +18,6 @@ interface Event {
     Modified: string;
 }
 
-interface EventResponse {
+export interface EventResponse {
     value: Event[];
-}
-
-export interface FetchResponse<T> {
-    success: boolean;
-    message: string;
-    results: T[];
 }

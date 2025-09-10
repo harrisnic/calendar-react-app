@@ -1,6 +1,11 @@
 import axios from "axios";
 import type { AxiosRequestConfig } from "axios";
-import type {FetchResponse} from "../types";
+
+export interface FetchResponse<T> {
+    success: boolean;
+    message: string;
+    results: T[];
+}
 
 const axiosInstance = axios.create({
     baseURL: import.meta.env.VITE_API_BASE_URL,

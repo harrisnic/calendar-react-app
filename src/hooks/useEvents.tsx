@@ -1,5 +1,5 @@
 import APIClient from "../services/APIClient.ts";
-import type {FetchResponse} from "../types";
+import type {FetchResponse} from "../services/APIClient.ts";
 import type {EventResponse} from "../types";
 import {useQuery} from "@tanstack/react-query";
 
@@ -16,8 +16,8 @@ const useEvents = () => {
     return {
         data: data?.results || [],
         error: error?.message,
-        loading: isLoading
+        isLoading
     };
 };
 
-export default useEvents();
+export default useEvents;
