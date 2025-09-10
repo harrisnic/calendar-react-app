@@ -1,19 +1,19 @@
 import './App.css'
 import EventsList from "./components/EventsList.tsx";
-import useEvents from "./hooks/useEvents.tsx";
+import useEvents from "./hooks/useEvents.ts";
 import {useContext, useEffect} from "react";
 import {CalendarCtx} from "./stores/calendar/calendarCtx.ts";
-
+import {CalendarActionTypes} from "./stores/calendar/calendarReducer.ts";
 
 function App() {
 
     const { data: calendarEvents, error, isLoading } = useEvents()
-    const { calendarCtxData: {events}, calendarCtxDispatcher } = useContext(CalendarCtx)
+    const { calendarCtxDispatcher } = useContext(CalendarCtx)
 
     useEffect(() => {
         if (calendarEvents.length > 0) {
             calendarCtxDispatcher({
-                type: "SIMPLE_APPEND",
+                type: CalendarActionTypes.SIMPLE_APPEND,
                 payload: {
                     events: calendarEvents
                 }

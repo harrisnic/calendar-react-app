@@ -5,7 +5,7 @@ import App from './App.tsx'
 import { FluentProvider, webLightTheme } from '@fluentui/react-components';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type {ReactNode} from 'react'
-import CalendarCtxProvider from "./stores/calendar/CalendarCtxProvider.tsx";
+import CalendarCtxProvider from "./stores/calendar/calendarCtxProvider.tsx";
 
 const queryClient = new QueryClient()
 
