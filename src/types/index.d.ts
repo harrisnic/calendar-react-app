@@ -1,4 +1,4 @@
-interface Event {
+interface CalendarEvent {
     ID: number;
     Title: string;
     Category: string;
@@ -18,6 +18,6 @@ interface Event {
     Modified: string;
 }
 
-export interface EventResponse {
-    value: Event[];
+export interface CalendarEventResponse {
+    value: CalendarEvent[];
 }

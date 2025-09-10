@@ -1,10 +1,8 @@
 import axios from "axios";
 import type { AxiosRequestConfig } from "axios";
 
-export interface FetchResponse<T> {
-    success: boolean;
-    message: string;
-    results: T[];
+export interface APIResponse<T> {
+    value: T[];
 }
 
 const axiosInstance = axios.create({
@@ -21,9 +19,9 @@ class APIClient<T> {
         this.endpoint = endpoint;
     }
 
-    getAll = (config: AxiosRequestConfig) => {
+    getAll = (config?: AxiosRequestConfig) => {
         return axiosInstance
-            .get<FetchResponse<T>>(this.endpoint, config)
+            .post<APIResponse<T>>(this.endpoint, {}, config)
             .then(res => res.data)
             .catch(error => {
                 console.error(`Error fetching from ${this.endpoint}:`, error);
