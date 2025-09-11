@@ -4,6 +4,7 @@ import useEvents from "./hooks/useEvents.ts";
 import {useContext, useEffect} from "react";
 import {CalendarCtx} from "./stores/calendar/calendarCtx.ts";
 import {CalendarActionTypes} from "./stores/calendar/calendarReducer.ts";
+import {PacmanLoader} from "react-spinners";
 
 function App() {
 
@@ -21,7 +22,8 @@ function App() {
         }
     }, [calendarEvents])
 
-    if (isLoading) return <div>Loading...</div>
+    if (isLoading) return <PacmanLoader size={16} color="#03787C"/>
+
     if (error) return <div>Error: {error}</div>
 
     return (
