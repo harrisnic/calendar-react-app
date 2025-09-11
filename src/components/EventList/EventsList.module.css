@@ -1,0 +1,36 @@
+.eventsContainer {
+    max-width: 380px;
+}
+
+.eventsHeader {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-sm);
+}
+
+.eventsHeaderIcon {
+    font-size: var(--font-size-xlarge);
+    font-weight: var(--font-weight-semi-bold);
+}
+
+ul.eventsGroup {
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-sm) 0;
+}
+
+ul.eventsGroup li {
+    cursor: pointer;
+    color: var(--color-link);
+    padding: var(--spacing-sm);
+}
+
+ul.eventsGroup li:nth-child(odd) {
+    background-color: var(--color-link-background);
+
+}
+
+ul.eventsGroup li:hover {
+    color: var(--color-link-hover);
+    background-color: var(--color-link-background-hover);
+}

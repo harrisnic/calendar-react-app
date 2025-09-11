@@ -12,12 +12,14 @@ export interface CalendarAction {
 }
 
 export const CalendarActionTypes = {
-    SIMPLE_APPEND: "simpleAppend"
+    ADD_SELECTED_EVENT: "addSelectedEvent",
+    ADD_EVENTS: "addEvents",
 }
 
 export const calendarReducer = (state: CalendarState, action: CalendarAction) => {
     switch (action.type) {
-        case CalendarActionTypes.SIMPLE_APPEND:
+        case CalendarActionTypes.ADD_SELECTED_EVENT:
+        case CalendarActionTypes.ADD_EVENTS:
             return {...state, ...action.payload}
         default:
             return state;

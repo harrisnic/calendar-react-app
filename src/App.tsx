@@ -1,5 +1,5 @@
 import './App.css'
-import EventsList from "./components/EventsList.tsx";
+import EventsList from "./components/EventList/EventsList.tsx";
 import useEvents from "./hooks/useEvents.ts";
 import {useContext, useEffect} from "react";
 import {CalendarCtx} from "./stores/calendar/calendarCtx.ts";
@@ -13,7 +13,7 @@ function App() {
     useEffect(() => {
         if (calendarEvents.length > 0) {
             calendarCtxDispatcher({
-                type: CalendarActionTypes.SIMPLE_APPEND,
+                type: CalendarActionTypes.ADD_EVENTS,
                 payload: {
                     events: calendarEvents
                 }

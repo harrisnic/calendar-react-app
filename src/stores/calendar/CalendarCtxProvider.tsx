@@ -15,7 +15,7 @@ const defaultInitialState: CalendarState = {
     events: []
 }
 
-const calendarCtxProvider = ({ children, initialState = defaultInitialState }: Props) => {
+const CalendarCtxProvider = ({ children, initialState = defaultInitialState }: Props) => {
     const [calendarCtxData, calendarCtxDispatcher] = useReducer(calendarReducer, initialState)
 
     return (
@@ -25,4 +25,4 @@ const calendarCtxProvider = ({ children, initialState = defaultInitialState }: P
     )
 }
 
-export default calendarCtxProvider
+export default CalendarCtxProvider
