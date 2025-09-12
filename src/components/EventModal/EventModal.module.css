@@ -1,0 +1,26 @@
+.modalContainer {
+    max-width: 680px;
+    background-color: aqua;
+}
+
+.modalHeader {
+    display: flex;
+    flex-direction: row;
+    height: 200px;
+    background-color: var(--color-neutral-light);
+}
+
+.modalHeaderTitle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distributes children with space between them */
+    height: 100%;
+}
+
+.modalContent {
+    display: flex;
+    flex-direction: row;
+}
+
+.modalFooter {
+}

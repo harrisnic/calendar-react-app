@@ -3,7 +3,7 @@ import type {ReactNode} from 'react'
 import {CalendarCtx} from "./calendarCtx.ts";
 import {calendarReducer, type CalendarState} from "./calendarReducer.ts";
 
-interface Props {
+interface ICalendarCtxProviderProps {
     children?: ReactNode;
     initialState?: CalendarState;
 }
@@ -15,7 +15,7 @@ const defaultInitialState: CalendarState = {
     events: []
 }
 
-const CalendarCtxProvider = ({ children, initialState = defaultInitialState }: Props) => {
+const CalendarCtxProvider = ({ children, initialState = defaultInitialState }: ICalendarCtxProviderProps) => {
     const [calendarCtxData, calendarCtxDispatcher] = useReducer(calendarReducer, initialState)
 
     return (
