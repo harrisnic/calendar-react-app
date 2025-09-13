@@ -6,7 +6,7 @@
     --font-weight-semi-bold: 600;
     --font-size-small: 12px;
     --font-size-medium: 14px;
-    --font-size-large: 16px;
+    --font-size-large: 18px;
     --font-size-xlarge: 20px;
 
     /* Colors */
@@ -28,7 +28,8 @@
     --spacing-xl: 30px;
 
     /* Borders */
-    --border-radius: 8px;
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
     --border-width: 1px;
 
     /* Animation */
@@ -62,6 +63,22 @@ h2 {
     font-size: var(--font-size-xlarge);
     font-weight: var(--font-weight-semi-bold);
     margin: 0;
+}
+
+h3 {
+    font-size: var(--font-size-large);
+    font-weight: var(--font-weight-semi-bold);
+    margin: 0;
+}
+
+a {
+    cursor: pointer;
+    color: var(--color-link);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--color-link-hover);
 }
 
 .textBoldCap {

@@ -1,5 +1,18 @@
 import { DateTime } from 'luxon';
 
+interface timeDuration {
+    hours: number;
+    minutes: number;
+}
+
+export enum DatePartEnum {
+    YEAR = 'year',
+    MONTH = 'month',
+    DAY = 'day',
+    HOUR = 'hour',
+    MINUTE = 'minute'
+}
+
 /**
  * Format date in a friendly way for upcoming events
  * If the event is less than a week from now, display “in 3 days” or “in 10 hours”
@@ -65,4 +78,82 @@ export const shortDateFormat = (date: string, lineBreak: boolean = true): string
 export const longDateFormat = (date: string): string => {
     const dt = DateTime.fromISO(date);
     return dt.toFormat('ccc, dd MMM yyyy');
+}
+
+/**
+ * Calculate the duration between two dates
+ *
+ * @param startDate ISO date string
+ * @param endDate ISO date string
+ * @returns Object containing hours and minutes
+ */
+export const timeDuration = (startDate, endDate): timeDuration => {
+    const startDateTime = DateTime.fromISO(startDate);
+    const endDateTime = DateTime.fromISO(endDate);
+
+    // Calculate the duration
+    const duration = endDateTime.diff(startDateTime);
+
+    return {
+        hours: Math.floor(duration.as('hours')),
+        minutes: Math.floor(duration.as('minutes') % 60)
+    };
+}
+
+/**
+ *  Returns the part of the date
+ *  e.g. getDatePart("2025-01-01", "year") returns 2025
+ *
+ * @param date ISO date string
+ * @param part year, month, day, hour, minute
+ * @returns part of the date
+ */
+export const getDatePart = (date: string, part: DatePartEnum): number => {
+    const dateTime = DateTime.fromISO(date);
+    let datePart = null;
+
+    switch (part.toLowerCase()) {
+        case DatePartEnum.YEAR:
+            datePart = dateTime.year;
+            break;
+        case DatePartEnum.MONTH:
+            datePart = dateTime.month;
+            break;
+        case DatePartEnum.DAY:
+            datePart = dateTime.day;
+            break;
+        case DatePartEnum.HOUR:
+            datePart = dateTime.toFormat('HH');
+            break;
+        case DatePartEnum.MINUTE:
+            datePart = dateTime.minute;
+            break
+        default:
+            throw new Error(`Unsupported part: ${part}. Supported parts are: year, month, day, hour, minute`);
+    }
+
+    return Number(datePart)
+}
+
+/**
+ * Format date in Euro format
+ * e.g. "12/10/2023"
+ *
+ * @param date ISO date string
+ * @returns Formatted date string
+ */
+export const getEuroDate = (date: string): string => {
+    const dt = DateTime.fromISO(date);
+    return dt.toFormat('dd/MM/yyyy');
+}
+
+/**
+ * Extract time from a date string in HH:MM format
+ *
+ * @param date ISO date string
+ * @returns Formatted time as HH:MM
+ */
+export const getTime = (date: string): string => {
+    const dateTime = DateTime.fromISO(date);
+    return dateTime.toFormat('HH:mm');
 }

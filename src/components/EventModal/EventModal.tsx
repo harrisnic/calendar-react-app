@@ -2,9 +2,10 @@ import type {Address, CalendarEvent} from "../../types";
 import styles from "./EventModal.module.css";
 import {FontIcon, Image, ImageFit} from '@fluentui/react';
 import DOMPurify from 'dompurify';
-import {longDateFormat, shortDateFormat} from "../../utils/dateUtils.ts";
+import {getEuroDate, getTime, longDateFormat, shortDateFormat} from "../../utils/dateUtils.ts";
 import {formatAddress} from "../../utils/geoUtils.ts";
 import * as React from "react";
+import {generateICS} from "../../utils/calendarUtils.ts";
 
 interface IEventModalProps {
     isOpen: boolean;
@@ -36,18 +37,26 @@ const EventModal = ({isOpen, onClose, event}: IEventModalProps) => {
         }
     };
 
+    // Load the banner image from the API or fallback to a default image
+    const loadBannerImage = (url: string) => {
+        if (url.length > 0) {
+            return url;
+        }
+        return `${import.meta.env.VITE_REACT_APP_BASE_URL}/fallback-image.png`;
+    }
+
     return (
         <div className={styles.modalWrapper} onClick={handleWrapperClick}>
             <div className={styles.modalContainer}>
 
                 <div className={styles.modalHeader}>
                     <div className={styles.hdrBannerContainer}>
-                    <Image
+                        <Image
                             imageFit={ImageFit.cover}
-                            src={event.BannerUrl}
+                            src={loadBannerImage(event.BannerUrl)}
                             alt="Event Banner"
                             width="100%"
-                            height={330}
+                            height="100%"
                         />
                     </div>
 
@@ -64,26 +73,38 @@ const EventModal = ({isOpen, onClose, event}: IEventModalProps) => {
                 </div> {/* end of modalHeader */}
 
                 <div className={styles.modalContent}>
-                    <div className={styles.contDescription} dangerouslySetInnerHTML={{ __html: sanitizedDescription }}></div>
-                    <div className={styles.contSiteInfo}>
+                    { event.Description &&
+                        <div className={styles.contDescription}>
+                            <p className="textBoldCap">Description</p>
+                            <div className={styles.contDescriptionText} dangerouslySetInnerHTML={{ __html: sanitizedDescription }}></div>
+                        </div>
+                    }
 
+                    <div className={styles.contSiteInfo}>
                         <div className={styles.contSiteDate}>
                             <p className="textBoldCap">Date and Time</p>
                             <p>{longDateFormat(event.EventStartDate)}{event.FullDayEvent ? " - Full Day Event" : ""}</p>
+                            <p><a onClick={() => generateICS(event)}>Add to Calendar</a></p>
                         </div>
 
                         { address &&
                             <div>
                                 <p className="textBoldCap">Location</p>
                                 <p style={{ whiteSpace: 'pre-line' }}>{address}</p>
+                                <p><a href={"#"}>View Map</a></p>
                             </div>
                         }
                     </div> {/* end of modalContentSiteInfo */}
                 </div> {/* end of modalContent */}
 
                 <div className={styles.modalFooter}>
-                    <p>Created by {event.Author} on {event.Created} at</p>
-                    <p>Modified by {event.Editor} on {event.Modified} at</p>
+                    <div className={styles.ftrContent}>
+                        <p>
+                            Created by {event.Author} on {getEuroDate(event.Created)} at {getTime(event.Created)}
+                            <br/>
+                            Modified by {event.Editor} on {getEuroDate(event.Modified)} at {getTime(event.Modified)}
+                        </p>
+                    </div>
                 </div> {/* end of modalFooter */}
 
             </div> {/* end of modalContainer */}
