@@ -1,6 +1,5 @@
 import type {Address} from "../types";
 
-
 /**
  * Formats an address object into a string representation
  * Returns null if all address fields are empty

@@ -61,7 +61,6 @@ export const generateICS = (calendarEvent: CalendarEvent) => {
             URL.revokeObjectURL(link.href);
             document.body.removeChild(link);
         }
-
     })
 
 }
