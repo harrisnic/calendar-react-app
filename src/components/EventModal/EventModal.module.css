@@ -1,25 +1,72 @@
 .modalContainer {
-    max-width: 680px;
+    max-width: 1280px;
     background-color: aqua;
+    border-radius: var(--border-radius);
+    overflow: hidden;
 }
 
 .modalHeader {
     display: flex;
     flex-direction: row;
-    height: 200px;
+    height: 330px;
+    width: 100%;
     background-color: var(--color-neutral-light);
 }
 
-.modalHeaderTitle {
+.modalHeaderImageContainer {
+    flex: 1;
+    overflow: hidden;
+}
+
+.modalHeaderInfoBox {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Distributes children with space between them */
-    height: 100%;
+    justify-content: space-between;
+    padding: var(--spacing-sm);
+    width: 425px;
+    min-width: 425px; /* Ensures will not shrink */
 }
+
+.modalHeaderDateCloseBtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.modalHeaderDateDisplay {
+    white-space: pre-line;
+    font-weight: var(--font-weight-semi-bold);
+}
+
+.closeBtn {
+    font-weight: var(--font-weight-semi-bold);
+    cursor: pointer;
+}
+
+
 
 .modalContent {
     display: flex;
     flex-direction: row;
+}
+
+/*.textBoldCap {*/
+/*    font-weight: var(--font-weight-semi-bold);*/
+/*    text-transform: uppercase;*/
+/*}*/
+
+.modalContentSiteInfo {
+    padding: var(--spacing-sm);
+    width: 425px;
+    min-width: 425px; /* Ensures will not shrink */
+}
+
+.modalContentSiteDate {
+    margin: 0 0 var(--spacing-md) 0;
+}
+
+.modalContentSiteLocation {
+
 }
 
 .modalFooter {

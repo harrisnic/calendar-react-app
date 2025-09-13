@@ -5,7 +5,7 @@ import type {CalendarEvent} from "../../types";
 import EventModal from "../EventModal/EventModal.tsx";
 import {CalendarActionTypes} from "../../stores/calendar/calendarReducer.ts";
 import styles from "./EventsList.module.css";
-import eventListDateFormat from "../../utils/dateUtils.ts";
+import {friendlyReadDateFormat} from "../../utils/dateUtils.ts";
 
 initializeIcons();
 
@@ -13,6 +13,8 @@ const EventsList = () => {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const { calendarCtxData: {events, selectedEvent}, calendarCtxDispatcher } = useContext(CalendarCtx)
+
+
 
     const handleEventSelect = (event: CalendarEvent) => {
         calendarCtxDispatcher({
@@ -26,6 +28,12 @@ const EventsList = () => {
 
     const handleCloseModal = () => {
         setIsModalOpen(false);
+
+        // Clear the selected event from the state
+        calendarCtxDispatcher({
+            type: CalendarActionTypes.CLEAR_SELECTED_EVENT,
+            payload: {}
+        })
     };
 
     // Sort the events based on EventStartDate
@@ -49,7 +57,7 @@ const EventsList = () => {
                             <ul className={styles.eventsGroup}>
                                 {sortedEvents.map((event: CalendarEvent) => (
                                     <li key={event.ID} onClick={() => { handleEventSelect(event) }}>
-                                        {event.Title} - {eventListDateFormat(event.EventStartDate)}
+                                        {event.Title} - {friendlyReadDateFormat(event.EventStartDate)}
                                     </li>
                                 ))}
                             </ul>

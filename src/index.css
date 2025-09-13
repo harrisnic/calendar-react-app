@@ -63,3 +63,9 @@ h2 {
     font-weight: var(--font-weight-semi-bold);
     margin: 0;
 }
+
+.textBoldCap {
+    font-weight: var(--font-weight-semi-bold);
+    text-transform: uppercase;
+}
+

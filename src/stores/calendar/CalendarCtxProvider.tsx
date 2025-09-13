@@ -11,7 +11,6 @@ interface ICalendarCtxProviderProps {
 // Define default initial state
 const defaultInitialState: CalendarState = {
     selectedEvent: null,
-    selectedDate: null,
     events: []
 }
 

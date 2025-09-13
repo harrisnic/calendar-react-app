@@ -2,7 +2,6 @@ import type {CalendarEvent} from "../../types";
 
 export interface CalendarState {
     selectedEvent?: CalendarEvent | null;
-    selectedDate?: Date | null;
     events?: CalendarEvent[];
 }
 
@@ -14,6 +13,7 @@ export interface CalendarAction {
 export const CalendarActionTypes = {
     ADD_SELECTED_EVENT: "addSelectedEvent",
     ADD_EVENTS: "addEvents",
+    CLEAR_SELECTED_EVENT: "clearSelectedEvent",
 }
 
 export const calendarReducer = (state: CalendarState, action: CalendarAction) => {
@@ -21,6 +21,8 @@ export const calendarReducer = (state: CalendarState, action: CalendarAction) =>
         case CalendarActionTypes.ADD_SELECTED_EVENT:
         case CalendarActionTypes.ADD_EVENTS:
             return {...state, ...action.payload}
+        case CalendarActionTypes.CLEAR_SELECTED_EVENT:
+            return {...state, selectedEvent: null}
         default:
             return state;
     }

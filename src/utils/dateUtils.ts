@@ -6,16 +6,15 @@ import { DateTime } from 'luxon';
  * Otherwise show the full date as (12/10/2023)
  *
  * @param date ISO date string
+ * @returns Formatted date string
  */
-const eventListDateFormat = (date: string) => {
-
+export const friendlyReadDateFormat = (date: string): string => {
     const dt = DateTime.fromISO(date);
     const now = DateTime.now();
     // const now = DateTime.fromISO("2025-12-22") // Uncomment to test
 
     // https://moment.github.io/luxon/#/math?id=diffs
     const diff = dt.diff(now, ['days', 'hours']).toObject();
-
 
     // If the event is in the past, then show the full date
     // https://moment.github.io/luxon/#/math?id=comparing-datetimes
@@ -38,7 +37,32 @@ const eventListDateFormat = (date: string) => {
 
     // More than a week from now, then show the full date
     return dt.toFormat('dd/MM/yyyy');
-
 }
 
-export default eventListDateFormat;
+/**
+ * Format date in a friendly way by showing the month and day
+ * e.g. "JAN\n12"
+ *
+ * @param date ISO date string
+ * @param lineBreak break the date into two lines
+ * @returns Formatted date string
+ */
+export const shortDateFormat = (date: string, lineBreak: boolean = true): string => {
+    const dt = DateTime.fromISO(date);
+    const month = dt.toFormat('MMM').toUpperCase();
+    const day = dt.toFormat('dd');
+    if (!lineBreak) return `${month} ${day}`;
+    return `${month}\n${day}`;
+}
+
+/**
+ * Format date in a friendly way by showing the day, month and year
+ * e.g. "Sat, 13 Sep 2025"
+ *
+ * @param date ISO date string
+ * @returns Formatted date string
+ */
+export const longDateFormat = (date: string): string => {
+    const dt = DateTime.fromISO(date);
+    return dt.toFormat('ccc, dd MMM yyyy');
+}
