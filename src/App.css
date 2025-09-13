@@ -1,4 +1,9 @@
 #root {
-  /*max-width: 1280px;*/
   margin: 0 auto;
+}
+
+.errorContainer {
+    background-color: var(--color-neutral-light);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-md);
 }

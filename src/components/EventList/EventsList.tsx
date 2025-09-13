@@ -14,8 +14,6 @@ const EventsList = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const { calendarCtxData: {events, selectedEvent}, calendarCtxDispatcher } = useContext(CalendarCtx)
 
-
-
     const handleEventSelect = (event: CalendarEvent) => {
         calendarCtxDispatcher({
             type: CalendarActionTypes.ADD_SELECTED_EVENT,
@@ -28,7 +26,6 @@ const EventsList = () => {
 
     const handleCloseModal = () => {
         setIsModalOpen(false);
-
         // Clear the selected event from the state
         calendarCtxDispatcher({
             type: CalendarActionTypes.CLEAR_SELECTED_EVENT,
@@ -51,9 +48,9 @@ const EventsList = () => {
                     </div>
 
                     {!(sortedEvents) || sortedEvents.length === 0 ? (
-                        <Text>No upcoming events</Text>
+                        <p>No upcoming events</p>
                     ) : (
-                        <div>
+                        <div className={styles.eventsGroupContainer}>
                             <ul className={styles.eventsGroup}>
                                 {sortedEvents.map((event: CalendarEvent) => (
                                     <li key={event.ID} onClick={() => { handleEventSelect(event) }}>

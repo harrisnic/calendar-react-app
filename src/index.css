@@ -32,18 +32,13 @@
     --border-radius-md: 8px;
     --border-width: 1px;
 
-    /* Animation */
-    --transition-speed: 0.25s;
-
     font-family: var(--font-family);
     line-height: var(--line-height);
     font-weight: var(--font-weight-regular);
     font-size: var(--font-size-medium);
 
-    color-scheme: light dark;
     color: var(--color-text);
     background-color: var(--color-background);
-
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -59,16 +54,20 @@ body {
     min-height: 100vh;
 }
 
+p {
+    margin: 0 0 var(--spacing-sm) 0;
+}
+
 h2 {
     font-size: var(--font-size-xlarge);
     font-weight: var(--font-weight-semi-bold);
-    margin: 0;
+    margin: 0 0 var(--spacing-sm) 0;
 }
 
 h3 {
     font-size: var(--font-size-large);
     font-weight: var(--font-weight-semi-bold);
-    margin: 0;
+    margin: 0 0 var(--spacing-sm) 0;
 }
 
 a {
@@ -85,4 +84,3 @@ a:hover {
     font-weight: var(--font-weight-semi-bold);
     text-transform: uppercase;
 }
-

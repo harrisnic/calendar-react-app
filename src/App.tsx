@@ -24,7 +24,15 @@ function App() {
 
     if (isLoading) return <PacmanLoader size={16} color="#03787C"/>
 
-    if (error) return <div>Error: {error}</div>
+    if (error) {
+        return (
+            <div className={"errorContainer"}>
+                <h3>Error</h3>
+                <p>An unexpected error occurred while processing your request. Please try again later or contact support if the problem persists.</p>
+                <p>{error}</p>
+            </div>
+        )
+    }
 
     return (
         <>
