@@ -1,6 +1,19 @@
+.modalWrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-neutral-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
 .modalContainer {
     max-width: 1280px;
-    background-color: aqua;
+    background-color: var(--color-background);
     border-radius: var(--border-radius);
     overflow: hidden;
 }
@@ -11,63 +24,63 @@
     height: 330px;
     width: 100%;
     background-color: var(--color-neutral-light);
+
+    .hdrBannerContainer {
+        flex: 1;
+        overflow: hidden;
+    }
+
+    .hdrSiteInfoBox {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: var(--spacing-sm);
+        width: 425px;
+        min-width: 425px; /* Ensures will not shrink */
+    }
+
+    .hdrDateCloseBtn {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .hdrDateDisplay {
+        white-space: pre-line;
+        font-weight: var(--font-weight-semi-bold);
+    }
+
+    .hdrCloseBtn {
+        font-weight: var(--font-weight-semi-bold);
+        cursor: pointer;
+    }
 }
-
-.modalHeaderImageContainer {
-    flex: 1;
-    overflow: hidden;
-}
-
-.modalHeaderInfoBox {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: var(--spacing-sm);
-    width: 425px;
-    min-width: 425px; /* Ensures will not shrink */
-}
-
-.modalHeaderDateCloseBtn {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.modalHeaderDateDisplay {
-    white-space: pre-line;
-    font-weight: var(--font-weight-semi-bold);
-}
-
-.closeBtn {
-    font-weight: var(--font-weight-semi-bold);
-    cursor: pointer;
-}
-
-
 
 .modalContent {
     display: flex;
     flex-direction: row;
+    
+    .contDescription {
+        padding: var(--spacing-sm);
+        width: 100%;
+    }
+
+    .contSiteInfo {
+        padding: var(--spacing-sm);
+        width: 425px;
+        min-width: 425px; /* Ensures will not shrink */
+
+        .contSiteDate {
+            margin: 0 0 var(--spacing-md) 0;
+        }
+
+    }
+
+
+
 }
 
-/*.textBoldCap {*/
-/*    font-weight: var(--font-weight-semi-bold);*/
-/*    text-transform: uppercase;*/
-/*}*/
 
-.modalContentSiteInfo {
-    padding: var(--spacing-sm);
-    width: 425px;
-    min-width: 425px; /* Ensures will not shrink */
-}
-
-.modalContentSiteDate {
-    margin: 0 0 var(--spacing-md) 0;
-}
-
-.modalContentSiteLocation {
-
-}
 
 .modalFooter {
 }
