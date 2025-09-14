@@ -5,7 +5,7 @@ import {useQuery} from "@tanstack/react-query";
 
 const apiClient = new APIClient<CalendarEventResponse>;
 
-const useEvents = () => {
+const useGetEvents = () => {
 
     const { data, error, isLoading } = useQuery<APIResponse<CalendarEvent>>({
         queryKey: ['events'],
@@ -21,4 +21,4 @@ const useEvents = () => {
 };
 
 
-export default useEvents;
+export default useGetEvents;

@@ -72,7 +72,7 @@ Preview the production build:
         - `/EventList`: Components for listing events
         - `/EventModal`: Modal components for displaying event details
     - `/hooks`: Custom React hooks
-        - `useEvents.ts`: Hook for fetching event data
+        - `useGetEvents.ts`: Hook for fetching event data
     - `/services`: API services
         - `APIClient.ts`: Axios-based API client
     - `/stores`: State management

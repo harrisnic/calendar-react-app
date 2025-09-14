@@ -1,6 +1,6 @@
 import './App.css'
 import EventsList from "./components/EventList/EventsList.tsx";
-import useEvents from "./hooks/useEvents.ts";
+import useGetEvents from "./hooks/useGetEvents.ts";
 import {useContext, useEffect} from "react";
 import {CalendarCtx} from "./stores/calendar/calendarCtx.ts";
 import {CalendarActionTypes} from "./stores/calendar/calendarReducer.ts";
@@ -8,7 +8,7 @@ import {PacmanLoader} from "react-spinners";
 
 function App() {
 
-    const { data: calendarEvents, error, isLoading } = useEvents()
+    const { data: calendarEvents, error, isLoading } = useGetEvents()
     const { calendarCtxDispatcher } = useContext(CalendarCtx)
 
     useEffect(() => {
